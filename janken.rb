@@ -11,9 +11,18 @@ while !player_result2
     for count in 1.. do
       puts"0(グー)1(チョキ)2(パー)3(戦わない)"
 
-      player_hands = gets.to_i
+      player_hands = gets.chomp
       com_hands = rand(0..2)
       
+      if player_hands =~ /\A-?\d+\z/
+        player_hands = player_hands.to_i
+      else
+        puts "::数値を入力してください"
+        next
+      end
+
+
+
       while player_hands != 0 && player_hands != 1 && player_hands != 2 && player_hands != 3
         puts "::入力が違います"
         puts"0(グー)1(チョキ)2(パー)3(戦わない)"
@@ -56,8 +65,15 @@ while !player_result2
 
         puts "#{border}\nあっち向いて〜"
         puts"0(上)1(下)2(左)3(右)"
-        player_direction = gets.to_i
+        player_direction = gets.chomp
         com_direction = rand(0..3)
+
+        if player_direction =~ /\A-?\d+\z/
+          player_direction = player_direction.to_i
+        else
+          puts "::数値を入力してください"
+          next
+        end
 
         while player_direction != 0 && player_direction != 1 && player_direction != 2 && player_direction != 3
             puts "::入力が違います"
